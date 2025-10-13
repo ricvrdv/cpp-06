@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjesus-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 13:59:16 by rjesus-d          #+#    #+#             */
-/*   Updated: 2025/10/13 13:59:57 by rjesus-d         ###   ########.fr       */
+/*   Created: 2025/10/13 17:08:03 by rjesus-d          #+#    #+#             */
+/*   Updated: 2025/10/13 17:08:12 by rjesus-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-int	main(int argc, char **argv)
+// Canonical Form members
+ScalarConverter::ScalarConverter(){}
+
+ScalarConverter::ScalarConverter( ScalarConverter const &other ){ (void)other; }
+
+ScalarConverter &ScalarConverter::operator=( ScalarConverter const &other )
 {
-    if (argc != 2)
-    {
-        std::cerr << "Usage: " << argv[0] << " <literal>\n";
-        return 1;
-    }
-    ScalarConverter::convert(argv[1]);
-    return 0;
+    (void)other;
+    return *this;
 }
+
+ScalarConverter::~ScalarConverter(){}
+
+// Member function - convert()
+void    ScalarConverter::convert( const std::string &literal )
+{
+    std::cout << literal << std::endl;
+}
+

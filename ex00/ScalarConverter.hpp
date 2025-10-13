@@ -14,6 +14,7 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
+# include <string>
 
 class   ScalarConverter
 {
@@ -21,11 +22,12 @@ class   ScalarConverter
 
         ScalarConverter();
         ScalarConverter( ScalarConverter const &other );
-        ScalarConverter &operator
+        ScalarConverter &operator=( ScalarConverter const &other );
         ~ScalarConverter();
 
-
     public:
+
+        static void convert( const std::string &literal );
 };
 
 #endif
