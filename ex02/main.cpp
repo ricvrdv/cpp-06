@@ -14,11 +14,11 @@ int main() {
         identify(*instance);
 
         delete  instance;
-        std::cout << "----------------\n";
+        std::cout << std::string(30, '=') << "\n";
     }
 
     std::cout << "\nForced failed cast test:\n";
-    Base baseInstance; // This is a pure Base, not A/B/C
+    Base baseInstance;
     identify(baseInstance); 
     return 0;
 }
