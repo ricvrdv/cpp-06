@@ -94,47 +94,51 @@ static void handleDoublePseudo(const std::string &str) {
 }
 
 static void handleFloat(const std::string &str) {
-	
-	try {
-        float f = std::strtof(str.c_str(), NULL);
-        if (std::isnan(f) || std::isinf(f) || f < 0 || f > std::numeric_limits<char>::max())
-            std::cout << "char: impossible\n";
-        else if (!std::isprint(static_cast<int>(f)))
-            std::cout << "char: Non displayable\n";
-        else
-            std::cout << "char: '" << static_cast<char>(f) << "'\n";
-        if (std::isnan(f) || std::isinf(f) || f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
-            std::cout << "int: impossible\n";
-        else
-            std::cout << "int: " << static_cast<int>(f) << '\n';
-        std::cout << std::fixed << std::setprecision(1);
-        std::cout << "float: " << f << "f\n";
-        std::cout << "double: " << static_cast<double>(f) << '\n';
-    } catch (...) {
+	errno = 0;
+    char    *endptr;
+    float f = std::strtof(str.c_str(), &endptr);
+
+    if (errno == ERANGE || endptr == str.c_str() || std::string(endptr) != "f") {
         std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
+        return;
     }
+    if (std::isnan(f) || std::isinf(f) || f < 0 || f > std::numeric_limits<char>::max())
+        std::cout << "char: impossible\n";
+    else if (!std::isprint(static_cast<int>(f)))
+        std::cout << "char: Non displayable\n";
+    else
+        std::cout << "char: '" << static_cast<char>(f) << "'\n";
+    if (std::isnan(f) || std::isinf(f) || f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
+        std::cout << "int: impossible\n";
+    else
+        std::cout << "int: " << static_cast<int>(f) << '\n';
+    std::cout << std::fixed << std::setprecision(1);
+    std::cout << "float: " << f << "f\n";
+    std::cout << "double: " << static_cast<double>(f) << '\n';  
 }
 
 static void handleDouble(const std::string &str) {
-	
-	try {
-        double d = std::strtod(str.c_str(), NULL);
-        if (std::isnan(d) || std::isinf(d) || d < 0 || d > std::numeric_limits<char>::max())
-            std::cout << "char: impossible\n";
-        else if (!std::isprint(static_cast<int>(d)))
-            std::cout << "char: Non displayable\n";
-        else
-            std::cout << "char: '" << static_cast<char>(d) << "'\n";
-        if (std::isnan(d) || std::isinf(d) || d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max())
-            std::cout << "int: impossible\n";
-        else
-            std::cout << "int: " << static_cast<int>(d) << '\n';
-        std::cout << std::fixed << std::setprecision(1);
-        std::cout << "float: " << static_cast<float>(d) << "f\n";
-        std::cout << "double: " << d << '\n';
-    } catch (...) {
+	errno = 0;
+    char    *endptr;
+    double d = std::strtod(str.c_str(), &endptr);
+
+    if (errno == ERANGE || endptr == str.c_str() || *endptr != '\0') {
         std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
+        return;
     }
+    if (std::isnan(d) || std::isinf(d) || d < 0 || d > std::numeric_limits<char>::max())
+        std::cout << "char: impossible\n";
+    else if (!std::isprint(static_cast<int>(d)))
+        std::cout << "char: Non displayable\n";
+    else
+        std::cout << "char: '" << static_cast<char>(d) << "'\n";
+    if (std::isnan(d) || std::isinf(d) || d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max())
+        std::cout << "int: impossible\n";
+    else
+        std::cout << "int: " << static_cast<int>(d) << '\n';
+    std::cout << std::fixed << std::setprecision(1);
+    std::cout << "float: " << static_cast<float>(d) << "f\n";
+    std::cout << "double: " << d << '\n';
 }
 
 static void handleInt(const std::string &str) {
