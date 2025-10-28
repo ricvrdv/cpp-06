@@ -3,7 +3,7 @@
 
 int main(){
     
-    std::cout << "\n" << GBOLD << "TEST 1" << std::string(40, '=') << RESET << "\n";
+    std::cout << "\n" << GBOLD << "TEST 1 " << std::string(40, '=') << RESET << "\n";
     Data    data1;
     data1.setValue(42);
 
@@ -29,7 +29,7 @@ int main(){
     std::cout << "Content via initial object: " << data1.getValue() << "\n";
     std::cout << "Content via deserialized pointer: " << ptr1->getValue() << "\n";
 
-    std::cout << "\n" << GBOLD << "TEST 2" << std::string(40, '=') << RESET << "\n";
+    std::cout << "\n" << GBOLD << "TEST 2 " << std::string(40, '=') << RESET << "\n";
     Data    *data2 = new Data();
     data2->setValue(21);
 
@@ -54,6 +54,8 @@ int main(){
     ptr2->setValue(2025);
     std::cout << "Content via initial object: " << data2->getValue() << "\n";
     std::cout << "Content via deserialized pointer: " << ptr2->getValue() << "\n";
+
+    delete data2;
 
     return 0;
 }
