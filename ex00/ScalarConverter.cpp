@@ -23,11 +23,11 @@ static bool isCharLiteral(const std::string& str) {
 }
 
 static bool isFloatPseudoLiteral(const std::string& str) {
-    return str == "nanf" || str == "+inff" || str == "-inff";
+    return str == "nanf" || str == "+inff" || str == "-inff" || str == "inff";
 }
 
 static bool isDoublePseudoLiteral(const std::string& str) {
-    return str == "nan" || str == "+inf" || str == "-inf";
+    return str == "nan" || str == "+inf" || str == "-inf" || str == "inf";
 }
 
 static void handleChar(const std::string &str) {
