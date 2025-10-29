@@ -13,3 +13,8 @@ The main project — ex00, **ScalarConverter** — implements a static class cap
 - Literal parsing and type detection
 - Handling pseudo-literals (`nan`, `+inf`, `-inf`, `nanf`, `+inff`, `-inff`)
 - Safe conversions and error handling
+
+----
+✅ Check out [C++ Module 07](https://github.com/ricvrdv/cpp-07) - function and class templates
+
+⏪️ Go back to [C++ Module 05](https://github.com/ricvrdv/cpp-05) - exception handling
